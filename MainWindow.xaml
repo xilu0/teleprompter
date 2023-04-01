@@ -5,30 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Teleprompter" Height="450" Width="800"
-        AllowsTransparency="True" WindowStyle="None" Background="Transparent" Topmost="True">
+        AllowsTransparency="True" Background="Transparent" Topmost="True" 
+        ResizeMode="CanResize"
+        WindowStyle="None">
 <Grid>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-    <Border Grid.Row="0" Background="#80FFFFFF" Padding="5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <StackPanel Orientation="Horizontal">
-            <Button Content="关闭" Click="CloseButton_Click" Margin="5" Padding="10,2"/>
+   <Border Grid.Row="0" Background="#80FFFFFF" Padding="5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <!-- 控制面板内容 -->
+    <StackPanel Orientation="Horizontal">
+    <Button Content="关闭" Click="CloseButton_Click" Margin="5" Padding="10,2"/>
             <Button Content="最小化" Click="MinimizeButton_Click" Margin="5" Padding="10,2"/>
-            <TextBlock Text="透明度：" Margin="10,0"/>
-            <Slider Name="OpacitySlider" Minimum="0.1" Maximum="1" Value="0.7" Width="100" ValueChanged="OpacitySlider_ValueChanged" Margin="5,0"/>
-            <TextBlock Text="文本大小：" Margin="10,0"/>
-            <Slider Name="FontSizeSlider" Minimum="10" Maximum="48" Value="24" Width="100" ValueChanged="FontSizeSlider_ValueChanged" Margin="5,0"/>
-            <TextBlock Text="文本颜色：" Margin="10,0"/>
-            <ComboBox Name="TextColorComboBox" Width="100" Margin="5,0" SelectionChanged="TextColorComboBox_SelectionChanged">
-                <ComboBoxItem Content="白色" IsSelected="True"/>
-                <ComboBoxItem Content="黑色"/>
-                <ComboBoxItem Content="红色"/>
-                <ComboBoxItem Content="蓝色"/>
-                <ComboBoxItem Content="绿色"/>
-            </ComboBox>
-        </StackPanel>
-    </Border>
+        <TextBlock Margin="5" VerticalAlignment="Center" Text="透明度:" />
+        <Slider x:Name="OpacitySlider" Width="100" Minimum="0.1" Maximum="1" Value="0.8" ValueChanged="OpacitySlider_ValueChanged" />
+        <TextBlock Margin="5" VerticalAlignment="Center" Text="字体大小:" />
+        <Slider x:Name="FontSizeSlider" Width="100" Minimum="12" Maximum="72" Value="24" ValueChanged="FontSizeSlider_ValueChanged" />
+        <TextBlock Margin="5" VerticalAlignment="Center" Text="文本颜色:" />
+        <ComboBox x:Name="TextColorComboBox" Width="100" SelectedIndex="0" SelectionChanged="TextColorComboBox_SelectionChanged">
+            <ComboBoxItem Content="白色" />
+            <ComboBoxItem Content="黑色" />
+            <ComboBoxItem Content="红色" />
+            <ComboBoxItem Content="蓝色" />
+            <ComboBoxItem Content="绿色" />
+        </ComboBox>
+    </StackPanel>
+</Border>
     <TextBox Grid.Row="1" Name="TeleprompterText" Margin="10" FontSize="24" FontWeight="Bold" Foreground="White" Background="#80FFFFFF" TextWrapping="Wrap" AcceptsReturn="True" />
+    <DockPanel LastChildFill="False" Margin="6">
+    <Thumb DockPanel.Dock="Bottom" Height="6" VerticalAlignment="Stretch" Background="Transparent" Cursor="SizeNS" DragDelta="Thumb_DragDelta"/>
+    <Thumb DockPanel.Dock="Right" Width="6" HorizontalAlignment="Stretch" Background="Transparent" Cursor="SizeWE" DragDelta="Thumb_DragDelta"/>
+    <Thumb DockPanel.Dock="Bottom" Width="6" Height="6" Background="Transparent" Cursor="SizeNWSE" DragDelta="Thumb_DragDelta"/>
+</DockPanel>
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle x:Name="BottomGrip" Grid.Row="1" Fill="Transparent" Cursor="SizeNS" MouseLeftButtonDown="ResizeGrip_MouseLeftButtonDown" />
+        <Rectangle x:Name="RightGrip" Grid.Column="1" Fill="Transparent" Cursor="SizeWE" MouseLeftButtonDown="ResizeGrip_MouseLeftButtonDown" />
+        <Rectangle x:Name="BottomRightGrip" Grid.Row="1" Grid.Column="1" Fill="Transparent" Cursor="SizeNWSE" MouseLeftButtonDown="ResizeGrip_MouseLeftButtonDown" />
+    </Grid>
 </Grid>
 </Window>

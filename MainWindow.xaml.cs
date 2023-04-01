@@ -1,6 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Interop;
+using System.Runtime.InteropServices;
 
 namespace Teleprompter
 {
@@ -63,6 +68,52 @@ namespace Teleprompter
                 case 4:
                     TeleprompterText.Foreground = new SolidColorBrush(Colors.Green);
                     break;
+            }
+        }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+        private void ResizeGrip_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            const int WM_SYSCOMMAND = 0x112;
+            const int SC_SIZE = 0xF000;
+
+            int sizeCode = 0;
+            FrameworkElement grip = sender as FrameworkElement;
+
+            if (grip == null)
+                return;
+
+            if (grip.Name == "BottomGrip")
+                sizeCode = 6;
+            else if (grip.Name == "RightGrip")
+                sizeCode = 8;
+            else if (grip.Name == "BottomRightGrip")
+                sizeCode = 9;
+            if (sizeCode != 0)
+            {
+                IntPtr hWnd = new WindowInteropHelper(this).Handle;
+                SendMessage(hWnd, WM_SYSCOMMAND, (IntPtr)(SC_SIZE + sizeCode), IntPtr.Zero);
+                e.Handled = true;
+            }
+        }
+
+        private void Thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            Thumb thumb = sender as Thumb;
+            if (thumb == null) return;
+
+            if (thumb.Cursor == Cursors.SizeNS || thumb.Cursor == Cursors.SizeNWSE)
+            {
+                double height = this.Height + e.VerticalChange;
+                this.Height = Math.Max(this.MinHeight, Math.Min(height, this.MaxHeight));
+            }
+
+            if (thumb.Cursor == Cursors.SizeWE || thumb.Cursor == Cursors.SizeNWSE)
+            {
+                double width = this.Width + e.HorizontalChange;
+                this.Width = Math.Max(this.MinWidth, Math.Min(width, this.MaxWidth));
             }
         }
 
