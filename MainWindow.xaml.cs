@@ -104,13 +104,13 @@ namespace Teleprompter
             Thumb thumb = sender as Thumb;
             if (thumb == null) return;
 
-            if (thumb.Cursor == Cursors.SizeNS || thumb.Cursor == Cursors.SizeNWSE)
+            if (thumb.Cursor == Cursors.SizeNS || thumb.Cursor == Cursors.SizeNWSE || thumb.Cursor == Cursors.SizeNESW)
             {
                 double height = this.Height + e.VerticalChange;
                 this.Height = Math.Max(this.MinHeight, Math.Min(height, this.MaxHeight));
             }
 
-            if (thumb.Cursor == Cursors.SizeWE || thumb.Cursor == Cursors.SizeNWSE)
+            if (thumb.Cursor == Cursors.SizeWE || thumb.Cursor == Cursors.SizeNWSE || thumb.Cursor == Cursors.SizeNESW)
             {
                 double width = this.Width + e.HorizontalChange;
                 this.Width = Math.Max(this.MinWidth, Math.Min(width, this.MaxWidth));

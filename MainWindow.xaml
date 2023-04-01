@@ -34,10 +34,15 @@
 </Border>
     <TextBox Grid.Row="1" Name="TeleprompterText" Margin="10" FontSize="24" FontWeight="Bold" Foreground="White" Background="#80FFFFFF" TextWrapping="Wrap" AcceptsReturn="True" />
     <DockPanel LastChildFill="False" Margin="6">
+    <Thumb DockPanel.Dock="Top" Height="6" VerticalAlignment="Stretch" Background="Transparent" Cursor="SizeNS" DragDelta="Thumb_DragDelta"/>
     <Thumb DockPanel.Dock="Bottom" Height="6" VerticalAlignment="Stretch" Background="Transparent" Cursor="SizeNS" DragDelta="Thumb_DragDelta"/>
+    <Thumb DockPanel.Dock="Left" Width="6" HorizontalAlignment="Stretch" Background="Transparent" Cursor="SizeWE" DragDelta="Thumb_DragDelta"/>
     <Thumb DockPanel.Dock="Right" Width="6" HorizontalAlignment="Stretch" Background="Transparent" Cursor="SizeWE" DragDelta="Thumb_DragDelta"/>
-    <Thumb DockPanel.Dock="Bottom" Width="6" Height="6" Background="Transparent" Cursor="SizeNWSE" DragDelta="Thumb_DragDelta"/>
-</DockPanel>
+    <Thumb Margin="0,0,6,6" HorizontalAlignment="Right" VerticalAlignment="Top" Width="6" Height="6" Background="Transparent" Cursor="SizeNWSE" DragDelta="Thumb_DragDelta"/>
+    <Thumb Margin="0,6,6,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="6" Height="6" Background="Transparent" Cursor="SizeNESW" DragDelta="Thumb_DragDelta"/>
+    <Thumb Margin="6,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="6" Height="6" Background="Transparent" Cursor="SizeNWSE" DragDelta="Thumb_DragDelta"/>
+    <Thumb Margin="6,0,0,6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="6" Height="6" Background="Transparent" Cursor="SizeNESW" DragDelta="Thumb_DragDelta"/>
+    </DockPanel>
     <Grid Margin="6">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
