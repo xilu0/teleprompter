@@ -19,6 +19,11 @@ Teleprompter is a simple desktop teleprompter application designed for the Windo
 4. Use the top menu bar to adjust opacity, text size, and text color.
 5. Drag the edges of the window to resize it.
 
+## How to build
+
+    dotnet publish -c Release -r win-x64
+    dotnet publish -c Release -r win-x64 --self-contained  /p:PublishSingleFile=true
+
 ## Notes
 
 - This project is based on dotnet core 7.0.202. Make sure the appropriate version of .NET Framework is installed on your system.
