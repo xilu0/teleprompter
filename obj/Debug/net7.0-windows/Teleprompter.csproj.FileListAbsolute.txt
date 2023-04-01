@@ -4,10 +4,10 @@ D:\src\cshap\Teleprompter\bin\Debug\net7.0-windows\Teleprompter.runtimeconfig.js
 D:\src\cshap\Teleprompter\bin\Debug\net7.0-windows\Teleprompter.dll
 D:\src\cshap\Teleprompter\bin\Debug\net7.0-windows\Teleprompter.pdb
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\Teleprompter.csproj.AssemblyReference.cache
+D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\MainWindow.baml
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\MainWindow.g.cs
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\App.g.cs
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\Teleprompter_MarkupCompile.cache
-D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\MainWindow.baml
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\Teleprompter.g.resources
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\Teleprompter.GeneratedMSBuildEditorConfig.editorconfig
 D:\src\cshap\Teleprompter\obj\Debug\net7.0-windows\Teleprompter.AssemblyInfoInputs.cache
