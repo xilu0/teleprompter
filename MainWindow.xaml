@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Teleprompter" Height="450" Width="800"
-        AllowsTransparency="True" WindowStyle="None" Background="Transparent" Topmost="True" Opacity="0.7">
-    <Grid>
-        <TextBox Name="TeleprompterText" Margin="10" FontSize="24" FontWeight="Bold" Foreground="White" Background="Transparent" TextWrapping="Wrap" AcceptsReturn="True" />
-    </Grid>
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" Topmost="True">
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" Background="#80FFFFFF" Padding="5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="关闭" Click="CloseButton_Click" Margin="5" Padding="10,2"/>
+            <Button Content="最小化" Click="MinimizeButton_Click" Margin="5" Padding="10,2"/>
+            <TextBlock Text="透明度：" Margin="10,0"/>
+            <Slider Name="OpacitySlider" Minimum="0.1" Maximum="1" Value="0.7" Width="100" ValueChanged="OpacitySlider_ValueChanged" Margin="5,0"/>
+            <TextBlock Text="文本大小：" Margin="10,0"/>
+            <Slider Name="FontSizeSlider" Minimum="10" Maximum="48" Value="24" Width="100" ValueChanged="FontSizeSlider_ValueChanged" Margin="5,0"/>
+            <TextBlock Text="文本颜色：" Margin="10,0"/>
+            <ComboBox Name="TextColorComboBox" Width="100" Margin="5,0" SelectionChanged="TextColorComboBox_SelectionChanged">
+                <ComboBoxItem Content="白色" IsSelected="True"/>
+                <ComboBoxItem Content="黑色"/>
+                <ComboBoxItem Content="红色"/>
+                <ComboBoxItem Content="蓝色"/>
+                <ComboBoxItem Content="绿色"/>
+            </ComboBox>
+        </StackPanel>
+    </Border>
+    <TextBox Grid.Row="1" Name="TeleprompterText" Margin="10" FontSize="24" FontWeight="Bold" Foreground="White" Background="#80FFFFFF" TextWrapping="Wrap" AcceptsReturn="True" />
+</Grid>
 </Window>
